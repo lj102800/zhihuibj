@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,23 +56,17 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
 	@Override
 	public View initView() {
-//		view = View.inflate(mActivity, R.layout.pager_tab_detail, null);
-//		ViewUtils.inject(this,view);
-//		return view;
-		TextView view=new TextView(mActivity); 
-		view.setText("菜单详情-互动");
-		view.setTextColor(Color.RED);
-		view.setTextSize(22);
-		view.setGravity(Gravity.CENTER);
-		return view;
+		view = View.inflate(mActivity, R.layout.pager_tab_detail, null);
+		ViewUtils.inject(this,view);
+		return view; 
 	}
 	@Override
 	public void initData() { 
-//		String cache = CacheUtils.getCache(mUrl, mActivity);
-//		if(!TextUtils.isEmpty(cache)){
-//			processResult(cache);
-//		}
-//		getDataFromServer();
+		String cache = CacheUtils.getCache(mUrl, mActivity);
+		if(!TextUtils.isEmpty(cache)){
+			processResult(cache);
+		}
+		getDataFromServer();
 	}
 	private void getDataFromServer(){
 		HttpUtils utils=new HttpUtils();
@@ -82,6 +77,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 				String result = responseInfo.result;
 				System.out.println(result);
  				processResult(result);
+ 				CacheUtils.setCache(mUrl, result, mActivity);
 			}
 
 			@Override
@@ -119,6 +115,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) { 
 			ImageView view=new ImageView(mActivity);
+//			view.setScaleType(ScaleType.FIT_XY);//设置图片填充效果，表示填充父窗口
 			//获取图片链接，使用链接下载图片，将图片设置为ImageView，考虑内存溢出问题
 			mBitmapUtils.display(view, mTopNewsList.get(position).topimage);
 			container.addView(view);
@@ -126,8 +123,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 		}
 		@Override
 		public void destroyItem(ViewGroup container, int position, Object object) { 
-			container.removeView((View)object);
-			super.destroyItem(container, position, object);
+			container.removeView((View)object); 
 		}
 	}
 }
