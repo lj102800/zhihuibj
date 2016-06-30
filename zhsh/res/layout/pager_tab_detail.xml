@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-=======
-    xmlns:app="http://schemas.android.com/apk/res-auto" 
->>>>>>> 991d2050ad5b7b751210ef0de269e07f066d54a5
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto"  
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 	android:background="#000"
-    android:orientation="vertical" >
-<<<<<<< HEAD
+    android:orientation="vertical" > 
   
  <FrameLayout 
         android:layout_width="match_parent"
@@ -46,47 +41,7 @@
 	        app:strokeWidth="0dp"
 	        />
 	</RelativeLayout>
- </FrameLayout>
-=======
-    <FrameLayout 
-    	android:layout_height="180dp"
-        android:layout_width="fill_parent">
-	 <com.example.zhsh.view.HorizontalScrollViewPager
-		android:id="@+id/vp_table_detail"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-	/>
-	 <RelativeLayout 
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_gravity="bottom"
-        android:background="#a000"
-        android:padding="5dp"
-        >
- <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:id="@+id/tv_title"
-        android:text="标题"
-        android:textColor="#fff"
-        android:textSize="18sp"
-        />
-     <com.viewpagerindicator.CirclePageIndicator
-        android:id="@+id/indicator"
-        android:padding="10dip"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:background="#FFCCCCCC"
-        app:radius="10dp"
-        app:fillColor="#FF888888"
-        app:pageColor="#88FF0000"
-        app:strokeColor="#FF000000"
-        app:strokeWidth="2dp"
-        />
-     </RelativeLayout>
-     
-     </FrameLayout>
->>>>>>> 991d2050ad5b7b751210ef0de269e07f066d54a5
+ </FrameLayout>  
     <ListView
         android:id="@+id/lv_table_detail"
         android:layout_width="match_parent"
