@@ -140,7 +140,7 @@ int id iv_red_point 0x7f04000b
 int id left 0x7f040005
 int id ll_container 0x7f04000c
 int id lv_list 0x7f040018
-int id lv_table_detail 0x7f040020
+int id lv_table_detail 0x7f040021
 int id margin 0x7f040007
 int id menu_settings 0x7f040024
 int id none 0x7f040000
@@ -153,12 +153,12 @@ int id rg_group 0x7f040012
 int id right 0x7f040006
 int id rl_root 0x7f04000f
 int id selected_view 0x7f040009
-int id slidingmenumain 0x7f040021
+int id slidingmenumain 0x7f040022
 int id textView1 0x7f04001a
 int id top 0x7f040004
 int id triangle 0x7f040001
 int id tv_menu 0x7f04001b
-int id tv_title 0x7f040022
+int id tv_title 0x7f040020
 int id underline 0x7f040002
 int id vp_news_detail 0x7f04001e
 int id vp_pager 0x7f04000a

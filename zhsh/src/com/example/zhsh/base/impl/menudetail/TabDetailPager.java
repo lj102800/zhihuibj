@@ -3,17 +3,13 @@ package com.example.zhsh.base.impl.menudetail;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.zhsh.R;
 import com.example.zhsh.base.BaseMenuDetailPager;
@@ -31,6 +27,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.viewpagerindicator.CirclePageIndicator;
 /**
  * 12个页签的页面对象
  * @author Administrator
@@ -39,10 +36,14 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 public class TabDetailPager extends BaseMenuDetailPager {
  
 	private NewsTabData mTableData;  
+	
 	@ViewInject(R.id.lv_table_detail)
 	private ListView lvList;
 	@ViewInject(R.id.vp_table_detail)
 	private ViewPager mViewPager;
+	@ViewInject(R.id.indicator)
+	private CirclePageIndicator mIndicator;
+	
 	private String mUrl;
 	private NewsData mNewsTabData;
 	private ArrayList<TopNews> mTopNewsList;
@@ -95,6 +96,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
 		if(mTopNewsList!=null){
 			mTopNewAdapter = new TopNewAdapter();
 			mViewPager.setAdapter(mTopNewAdapter); 
+			mIndicator.setViewPager(mViewPager);
+			mIndicator.setSnap(true);//快照模式
+			mIndicator.onPageSelected(0);//将小圆点位置归零，否则它会在页面销毁时仍记录上次位置的bug
 		}
 		System.out.println(mNewsTabData);
 	}
