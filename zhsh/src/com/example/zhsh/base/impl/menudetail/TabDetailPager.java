@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+<<<<<<< HEAD
 import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
+=======
+>>>>>>> 991d2050ad5b7b751210ef0de269e07f066d54a5
 import android.widget.ListView;
 
 import com.example.zhsh.R;
@@ -44,12 +47,19 @@ public class TabDetailPager extends BaseMenuDetailPager {
 	@ViewInject(R.id.lv_table_detail)
 	private ListView lvList;
 	@ViewInject(R.id.vp_table_detail)
+<<<<<<< HEAD
 	private   HorizontalScrollViewPager mViewPager;
 	@ViewInject(R.id.indicator)
 	private CirclePageIndicator mIndicator;
 	@ViewInject(R.id.tv_title)
 	private TextView tvTopNewsTitle;
 	 
+=======
+	private ViewPager mViewPager;
+	@ViewInject(R.id.indicator)
+	private CirclePageIndicator mIndicator;
+	
+>>>>>>> 991d2050ad5b7b751210ef0de269e07f066d54a5
 	private String mUrl;
 	private NewsData mNewsTabData;
 	private ArrayList<TopNews> mTopNewsList;
@@ -104,6 +114,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 			mViewPager.setAdapter(mTopNewAdapter); 
 			mIndicator.setViewPager(mViewPager);
 			mIndicator.setSnap(true);//快照模式
+<<<<<<< HEAD
 			mIndicator.setCurrentItem(0);
 			tvTopNewsTitle.setText(mTopNewsList.get(0).title);
 			mIndicator.setOnPageChangeListener(new OnPageChangeListener() {
@@ -123,6 +134,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
 					 
 				}
 			});
+=======
+			mIndicator.onPageSelected(0);//将小圆点位置归零，否则它会在页面销毁时仍记录上次位置的bug
+>>>>>>> 991d2050ad5b7b751210ef0de269e07f066d54a5
 		}
 		System.out.println(mNewsTabData);
 	}
