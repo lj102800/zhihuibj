@@ -3,17 +3,16 @@ package com.example.zhsh.base.impl.menudetail;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.zhsh.R;
 import com.example.zhsh.base.BaseMenuDetailPager;
@@ -22,6 +21,7 @@ import com.example.zhsh.domain.NewsData;
 import com.example.zhsh.domain.NewsData.TopNews;
 import com.example.zhsh.global.Constants;
 import com.example.zhsh.utils.CacheUtils;
+import com.example.zhsh.view.HorizontalScrollViewPager;
 import com.google.gson.Gson;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
@@ -31,6 +31,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.viewpagerindicator.CirclePageIndicator;
 /**
  * 12个页签的页面对象
  * @author Administrator
@@ -39,10 +40,16 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 public class TabDetailPager extends BaseMenuDetailPager {
  
 	private NewsTabData mTableData;  
+	
 	@ViewInject(R.id.lv_table_detail)
 	private ListView lvList;
 	@ViewInject(R.id.vp_table_detail)
-	private ViewPager mViewPager;
+	private   HorizontalScrollViewPager mViewPager;
+	@ViewInject(R.id.indicator)
+	private CirclePageIndicator mIndicator;
+	@ViewInject(R.id.tv_title)
+	private TextView tvTopNewsTitle;
+	 
 	private String mUrl;
 	private NewsData mNewsTabData;
 	private ArrayList<TopNews> mTopNewsList;
@@ -95,6 +102,27 @@ public class TabDetailPager extends BaseMenuDetailPager {
 		if(mTopNewsList!=null){
 			mTopNewAdapter = new TopNewAdapter();
 			mViewPager.setAdapter(mTopNewAdapter); 
+			mIndicator.setViewPager(mViewPager);
+			mIndicator.setSnap(true);//快照模式
+			mIndicator.setCurrentItem(0);
+			tvTopNewsTitle.setText(mTopNewsList.get(0).title);
+			mIndicator.setOnPageChangeListener(new OnPageChangeListener() {
+				
+				@Override
+				public void onPageSelected(int arg0) {
+					tvTopNewsTitle.setText(mTopNewsList.get(arg0).title);
+				}
+				
+				@Override
+				public void onPageScrolled(int arg0, float arg1, int arg2) {
+					 
+				}
+				
+				@Override
+				public void onPageScrollStateChanged(int arg0) {
+					 
+				}
+			});
 		}
 		System.out.println(mNewsTabData);
 	}
@@ -115,7 +143,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) { 
 			ImageView view=new ImageView(mActivity);
-//			view.setScaleType(ScaleType.FIT_XY);//设置图片填充效果，表示填充父窗口
+			view.setScaleType(ScaleType.FIT_XY);//设置图片填充效果，表示填充父窗口
 			//获取图片链接，使用链接下载图片，将图片设置为ImageView，考虑内存溢出问题
 			mBitmapUtils.display(view, mTopNewsList.get(position).topimage);
 			container.addView(view);
@@ -125,5 +153,46 @@ public class TabDetailPager extends BaseMenuDetailPager {
 		public void destroyItem(ViewGroup container, int position, Object object) { 
 			container.removeView((View)object); 
 		}
+	}
+	class NewAdapter extends BaseAdapter{
+
+		@Override
+		public int getCount() {
+			
+			return 0;
+		}
+
+		@Override
+		public Object getItem(int arg0) {
+			
+			return null;
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+			
+			return 0;
+		}
+
+		@Override
+		public View getView(int arg0, View arg1, ViewGroup arg2) {
+			ViewHolde holder;
+			if(arg1==null){
+				arg1=View.inflate(mActivity, R.layout.list_item_news, null);
+				holder=new ViewHolde();
+				holder.tvTitle=(TextView) arg1.findViewById(R.id.tv_title);
+				holder.tvDate=(TextView) arg1.findViewById(R.id.tv_date);
+				holder.ivIcon=(ImageView) arg1.findViewById(R.id.iv_icon);
+				arg1.setTag(holder);
+			}else{
+				holder=(ViewHolde) arg1.getTag();
+			} 
+			return arg1;
+		} 
+	}
+	static class ViewHolde{
+		public TextView tvTitle;
+		public TextView tvDate;
+		public ImageView ivIcon;
 	}
 }

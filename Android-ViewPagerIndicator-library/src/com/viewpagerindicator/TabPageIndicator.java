@@ -293,7 +293,7 @@ public class TabPageIndicator extends HorizontalScrollView implements
 	// dispatchTouchEvent->interceptTouchEvent->onTouchEvent
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
-		// 请求父控件及祖宗控件不要拦截当前控件的时间
+		// 请求父控件及祖宗控件不要拦截当前控件的事件
 		getParent().requestDisallowInterceptTouchEvent(true);
 		return super.dispatchTouchEvent(ev);
 	}
