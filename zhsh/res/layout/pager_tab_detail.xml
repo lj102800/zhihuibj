@@ -1,52 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
-    xmlns:app="http://schemas.android.com/apk/res-auto"  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-	android:background="#000"
     android:orientation="vertical" > 
-  
- <FrameLayout 
-        android:layout_width="match_parent"
-        android:layout_height="180dp">
-	 <com.example.zhsh.view.HorizontalScrollViewPager
-	        android:id="@+id/vp_table_detail"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	/>    
-	<RelativeLayout 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:padding="5dp"
-	    android:layout_gravity="bottom"
-	    android:background="#a000"
-	    >
-		<TextView 
-		    android:id="@+id/tv_title"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="标题"
-		    android:textColor="#fff"
-		    android:textSize="18sp"
-		    />
-		 <com.viewpagerindicator.CirclePageIndicator
-	        android:id="@+id/indicator"
-	        android:padding="10dip"
-	        android:layout_alignParentRight="true"
-	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content" 
-	        app:radius="3dp"
-	        app:fillColor="#f00"
-	        app:pageColor="#9e9e9e" 
-	        app:strokeWidth="0dp"
-	        />
-	</RelativeLayout>
- </FrameLayout>  
-    <ListView
+    <com.example.zhsh.view.RefreshListView
         android:id="@+id/lv_table_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-         />
-
+        android:cacheColorHint="#fff" 
+         /> 
 </LinearLayout>
