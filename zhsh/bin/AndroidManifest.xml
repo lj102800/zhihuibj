@@ -30,6 +30,10 @@
         <activity android:name="com.example.zhsh.GuideActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar"> 
         </activity>
+        <activity android:name="com.example.zhsh.NewsDetailActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar"> 
+        </activity>
+        
     </application>
 
 </manifest>

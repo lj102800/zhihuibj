@@ -3,7 +3,9 @@ package com.example.zhsh.base.impl.menudetail;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.sax.StartElementListener;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
@@ -17,6 +19,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zhsh.NewsDetailActivity;
 import com.example.zhsh.R;
 import com.example.zhsh.base.BaseMenuDetailPager;
 import com.example.zhsh.domain.NewMenuData.NewsTabData;
@@ -118,6 +121,9 @@ public class TabDetailPager extends BaseMenuDetailPager {
 					readIds=readIds+mNewsList.get(arg2).id+",";
 					PrefUtils.putString("read_ids", readIds, mActivity);
 				}
+				//跳到详情页
+				Intent intent=new Intent(mActivity,NewsDetailActivity.class);
+				mActivity.startActivity(intent);
 			}
 		});
 		return view; 
