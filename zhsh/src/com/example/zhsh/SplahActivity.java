@@ -1,9 +1,14 @@
 package com.example.zhsh;
  
-import com.example.zhsh.utils.PrefUtils;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -12,6 +17,8 @@ import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
+
+import com.example.zhsh.utils.PrefUtils;
 
 public class SplahActivity extends Activity {
 
@@ -66,9 +73,33 @@ public class SplahActivity extends Activity {
 					finish();
 			}
 		});
-		 
+		 s k=new s();
+		 k.execute("","","");
 		 
 	}
  
+class s extends AsyncTask<String, String, String>{
 
+	@Override
+	protected String doInBackground(String... arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	protected void onPostExecute(String result) {
+		// TODO Auto-generated method stub
+		super.onPostExecute(result);
+	}
+	@Override
+	protected void onPreExecute() {
+		// TODO Auto-generated method stub
+		super.onPreExecute();
+	}
+	@Override
+	protected void onProgressUpdate(String... values) {
+		// TODO Auto-generated method stub
+		super.onProgressUpdate(values);
+		
+	}
+} 
 }

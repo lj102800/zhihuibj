@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.zhsh.MainActivity;
@@ -21,6 +22,7 @@ public abstract class BasePage {
 	public ImageButton btnMenu;
 	public FrameLayout flContent;
 	public TextView tvTitle;
+	public ImageButton btnDisplay;
 	public BasePage(Activity activity){
 		mActivity=activity;
 		initView();
@@ -29,6 +31,7 @@ public abstract class BasePage {
 		mRootView = View.inflate(mActivity, R.layout.base_paper, null);
 		tvTitle = (TextView)mRootView.findViewById(R.id.tv_title);
 		btnMenu=(ImageButton)mRootView.findViewById(R.id.btn_menu);
+		btnDisplay=(ImageButton)mRootView.findViewById(R.id.btn_display);
 		flContent=(FrameLayout)mRootView.findViewById(R.id.fl_content2);
 		btnMenu.setOnClickListener(new OnClickListener() {
 			

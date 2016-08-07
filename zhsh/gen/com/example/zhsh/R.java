@@ -565,14 +565,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class id {
         public static final int bottom=0x7f040003;
         public static final int bt_start=0x7f04000d;
-        public static final int btn_back=0x7f04002a;
-        public static final int btn_menu=0x7f040029;
-        public static final int btn_share=0x7f04002d;
-        public static final int btn_textsize=0x7f04002c;
+        public static final int btn_back=0x7f04002b;
+        public static final int btn_display=0x7f04002f;
+        public static final int btn_menu=0x7f04002a;
+        public static final int btn_share=0x7f04002e;
+        public static final int btn_textsize=0x7f04002d;
         public static final int fl_content=0x7f04000e;
         public static final int fl_content2=0x7f040013;
         public static final int fl_left_menu=0x7f04001b;
         public static final int fullscreen=0x7f040008;
+        public static final int gv_list=0x7f040027;
         public static final int imageView1=0x7f040012;
         public static final int indicator=0x7f04001f;
         public static final int iv_arrow=0x7f040023;
@@ -581,11 +583,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int iv_red_point=0x7f04000b;
         public static final int left=0x7f040005;
         public static final int ll_container=0x7f04000c;
-        public static final int ll_controller=0x7f04002b;
+        public static final int ll_controller=0x7f04002c;
         public static final int lv_list=0x7f04001a;
-        public static final int lv_table_detail=0x7f040027;
+        public static final int lv_table_detail=0x7f040028;
         public static final int margin=0x7f040007;
-        public static final int menu_settings=0x7f04002e;
+        public static final int menu_settings=0x7f040030;
         public static final int none=0x7f040000;
         public static final int pb_loading=0x7f040010;
         public static final int rb_gov=0x7f040018;
@@ -597,7 +599,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int right=0x7f040006;
         public static final int rl_root=0x7f040011;
         public static final int selected_view=0x7f040009;
-        public static final int slidingmenumain=0x7f040028;
+        public static final int slidingmenumain=0x7f040029;
         public static final int textView1=0x7f04001c;
         public static final int top=0x7f040004;
         public static final int triangle=0x7f040001;
@@ -630,12 +632,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int list_header_topnews=0x7f030008;
         public static final int list_item_left_menu=0x7f030009;
         public static final int list_item_news=0x7f03000a;
-        public static final int list_refresh_footer=0x7f03000b;
-        public static final int list_refresh_header=0x7f03000c;
-        public static final int pager_menu_detail_news=0x7f03000d;
-        public static final int pager_tab_detail=0x7f03000e;
-        public static final int slidingmenumain=0x7f03000f;
-        public static final int title_bar=0x7f030010;
+        public static final int list_item_photo=0x7f03000b;
+        public static final int list_refresh_footer=0x7f03000c;
+        public static final int list_refresh_header=0x7f03000d;
+        public static final int pager_menu_detail_news=0x7f03000e;
+        public static final int pager_menu_detail_photo=0x7f03000f;
+        public static final int pager_tab_detail=0x7f030010;
+        public static final int slidingmenumain=0x7f030011;
+        public static final int title_bar=0x7f030012;
     }
     public static final class menu {
         public static final int activity_main=0x7f0b0000;

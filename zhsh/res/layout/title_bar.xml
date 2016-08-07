@@ -11,7 +11,7 @@
         android:textColor="#fff"
         android:textSize="22sp"
 		android:layout_centerInParent="true"
-android:text="标题" />
+		android:text="标题" />
      
 		 <ImageButton
 		     android:id="@+id/btn_menu"
@@ -45,8 +45,7 @@ android:text="标题" />
 		 <ImageButton
 		     android:id="@+id/btn_textsize"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_centerVertical="true"
+	        android:layout_height="wrap_content" 
 	        android:layout_marginLeft="10dp"
 	        android:background="@null" 
  	        android:src="@drawable/icon_textsize"
@@ -55,12 +54,21 @@ android:text="标题" />
 		 <ImageButton
 		     android:id="@+id/btn_share"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_centerVertical="true"
+	        android:layout_height="wrap_content" 
 	        android:layout_marginLeft="10dp"
 	        android:background="@null" 
 	        android:src="@drawable/icon_share"
 	        />
 	   </LinearLayout>
+		 <ImageButton
+		     android:id="@+id/btn_display"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="10dp"
+	        android:background="@null" 
+	        android:src="@drawable/icon_pic_grid_type"
+ 	        android:visibility="visible"	        />
 
 </RelativeLayout>

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.zhsh.MainActivity;
 import com.example.zhsh.base.BaseMenuDetailPager;
@@ -71,7 +73,7 @@ public class NewCenterPager extends BasePage {
 		menuDetails=new ArrayList<BaseMenuDetailPager>();
 		menuDetails.add(new NewsMenuDetailPager(mActivity,newsMenuData.data.get(0).children));
 		menuDetails.add(new TopicMenuDetailPager(mActivity,newsMenuData.data.get(1).children));
-		menuDetails.add(new PhotosMenuDetailPager(mActivity,newsMenuData.data.get(2).children));
+		menuDetails.add(new PhotosMenuDetailPager(mActivity, btnDisplay));
 		menuDetails.add(new InteractMenuDetailPager(mActivity,newsMenuData.data.get(3).children));
 		//菜单详情页---新闻作为初始页面
 		setCurrentMenuDetailPager(0);
@@ -83,6 +85,10 @@ public class NewCenterPager extends BasePage {
 		pager.initData();
 		//更改标题
 		tvTitle.setText(newsMenuData.data.get(position).title);
-		
+		//组图页面显示切换按钮 
+		if(pager instanceof PhotosMenuDetailPager){
+			btnDisplay.setVisibility(View.VISIBLE);
+		}else
+			btnDisplay.setVisibility(View.GONE);
 	}
 }

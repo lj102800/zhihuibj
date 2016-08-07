@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.sax.StartElementListener;
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -74,6 +76,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 	private String mMoreUrl;
 
 	private NewAdapter mNewAdapter;
+	private Handler mHandler=null;
 	public TabDetailPager(Activity activity,NewsTabData tabData) {
 		super(activity);
 		mTableData=tabData;
@@ -233,13 +236,46 @@ public class TabDetailPager extends BaseMenuDetailPager {
 			if(mNewsList!=null){
 				mNewAdapter = new NewAdapter();
 				lvList.setAdapter(mNewAdapter);
-			}
+			} 
+			//延时2秒切换广告条
+			if(mHandler==null){
+				mHandler=new Handler(){
+					public void handleMessage(android.os.Message msg) {
+						int currentItem=mViewPager.getCurrentItem();
+						if(currentItem<mTopNewsList.size()-1){
+							currentItem++;
+						}else{
+							currentItem=0;
+						} 
+						mViewPager.setCurrentItem(currentItem);
+						mHandler.sendEmptyMessageDelayed(0, 2000);
+					}; 
+				};//延时2秒广告条
+				mHandler.sendEmptyMessageDelayed(0, 2000);
+				mViewPager.setOnTouchListener(new OnTouchListener() {
+					
+					@Override
+					public boolean onTouch(View v, MotionEvent event) {
+						switch (event.getAction()) {
+						case MotionEvent.ACTION_UP://删除所有消息
+							mHandler.removeCallbacksAndMessages(null);
+							break; 
+						case MotionEvent.ACTION_CANCEL: 
+						case MotionEvent.ACTION_DOWN://延时2秒广告条
+							mHandler.sendEmptyMessageDelayed(0, 2000);
+							break; 
+						default:
+							break;
+						}
+						return false;
+					}
+				});
+			}  
 		}else{
 			ArrayList<News> moreData = mNewsTabData.data.news;
 			mNewsList.addAll(moreData);//追加数据 
 			mNewAdapter.notifyDataSetChanged();//刷新listview
-		}
-
+		} 
 		System.out.println(mNewsTabData);
 	}
 	class TopNewAdapter extends PagerAdapter{

@@ -98,6 +98,9 @@ public class NewsDetailActivity extends Activity implements OnClickListener{
 	}
 	private int mCurrentItem;
 	private int mSelectItem=2;
+	/**
+	 * 改变字体大小
+	 */
 	private void showChooseDialog(){
 		AlertDialog.Builder builder=new Builder(this);
 		builder.setTitle("字体设置");
@@ -170,6 +173,9 @@ public class NewsDetailActivity extends Activity implements OnClickListener{
 		}
 	
 	}
+	/**
+	 * 分享到功能
+	 */
 	private void showShare() {
 		 ShareSDK.initSDK(this);
 		 OnekeyShare oks = new OnekeyShare();
