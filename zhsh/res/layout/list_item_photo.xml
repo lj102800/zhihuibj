@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:background="@drawable/pic_list_item_bg"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_margin="10dp"
+    	android:orientation="vertical"
+        >
+        <ImageView 
+            android:id="@+id/iv_icon"
+	        android:layout_width="match_parent"
+	    	android:layout_height="160dp"
+	    	android:scaleType="centerCrop"
+	    	android:src="@drawable/news_pic_default"
+	   		android:background="@null"
+	    	/>
+		<TextView 
+		    android:id="@+id/tv_title"
+		    android:layout_width="match_parent"
+		  	android:layout_height="wrap_content"
+		  	android:text="标题"
+		  	android:textColor="#000"
+		  	android:textSize="18sp"
+		  	/>
+    </LinearLayout>
+
+</LinearLayout>
