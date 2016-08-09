@@ -3,10 +3,7 @@ package com.example.zhsh.base.impl.menudetail;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable.ConstantState;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -19,18 +16,15 @@ import android.widget.TextView;
 
 import com.example.zhsh.R;
 import com.example.zhsh.base.BaseMenuDetailPager;
-import com.example.zhsh.domain.NewMenuData.NewsTabData;
 import com.example.zhsh.domain.PhotoBean;
-import com.example.zhsh.domain.PhotoBean.PhotoData;
 import com.example.zhsh.domain.PhotoBean.PhotoNewsData;
 import com.example.zhsh.global.Constants;
 import com.example.zhsh.utils.CacheUtils;
+import com.example.zhsh.utils.bitmap.MyBitmapUtil;
 import com.google.gson.Gson;
-import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
@@ -90,10 +84,11 @@ public class PhotosMenuDetailPager extends BaseMenuDetailPager implements OnClic
 		gvlist.setAdapter(new PhotoAdapter());
 	}
 	class PhotoAdapter extends BaseAdapter{
-		private BitmapUtils mBitmapUtils;
+		private MyBitmapUtil mBitmapUtils;
 		public PhotoAdapter(){
-			mBitmapUtils=new BitmapUtils(mActivity);
-			mBitmapUtils.configDefaultLoadingImage(R.drawable.news_pic_default);
+//			mBitmapUtils=new BitmapUtils(mActivity);
+//			mBitmapUtils.configDefaultLoadingImage(R.drawable.news_pic_default);
+			mBitmapUtils=new MyBitmapUtil();
 		}
 		@Override
 		public int getCount() { 
@@ -125,6 +120,7 @@ public class PhotosMenuDetailPager extends BaseMenuDetailPager implements OnClic
 			PhotoNewsData item=getItem(arg0);
 			holder.tvTitle.setText(item.title);
 			mBitmapUtils.display(holder.ivIcon, item.listimage);
+			System.out.println(item.listimage+"=====");
 			return arg1;
 		} 
 	}
