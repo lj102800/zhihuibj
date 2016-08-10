@@ -31,6 +31,7 @@ import com.example.zhsh.domain.NewsData.TopNews;
 import com.example.zhsh.global.Constants;
 import com.example.zhsh.utils.CacheUtils;
 import com.example.zhsh.utils.PrefUtils;
+import com.example.zhsh.utils.bitmap.MyBitmapUtil;
 import com.example.zhsh.view.HorizontalScrollViewPager;
 import com.example.zhsh.view.RefreshListView;
 import com.example.zhsh.view.RefreshListView.OnRefreshListener;
@@ -279,9 +280,11 @@ public class TabDetailPager extends BaseMenuDetailPager {
 		System.out.println(mNewsTabData);
 	}
 	class TopNewAdapter extends PagerAdapter{
+//		MyBitmapUtil mBitmapUtils;
 		BitmapUtils mBitmapUtils;
 		public TopNewAdapter(){
 			mBitmapUtils=new BitmapUtils(mActivity);
+//			mBitmapUtils=new MyBitmapUtil();
 		}
 		@Override
 		public int getCount() { 
@@ -297,7 +300,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 			ImageView view=new ImageView(mActivity);
 			view.setScaleType(ScaleType.FIT_XY);//设置图片填充效果，表示填充父窗口
 			//获取图片链接，使用链接下载图片，将图片设置为ImageView，考虑内存溢出问题
-			mBitmapUtils.display(view, mTopNewsList.get(position).topimage);
+			mBitmapUtils.display(view, Constants.SERVER_URL+mTopNewsList.get(position).topimage);
 			container.addView(view);
 			return view;
 		}
@@ -345,7 +348,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
 			News news= getItem(arg0);
 			holder.tvTitle.setText(news.title);
 			holder.tvDate.setText(news.pubdate);
-			mBitmapUtils.display(holder.ivIcon, news.listimage);
+			mBitmapUtils.display(holder.ivIcon, Constants.SERVER_URL+news.listimage);
 			
 			//标记已读和未读
 			String readIds=PrefUtils.getString("read_ids", "", mActivity);

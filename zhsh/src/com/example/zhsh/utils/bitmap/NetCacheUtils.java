@@ -19,8 +19,10 @@ import android.widget.ImageView;
 public class NetCacheUtils {
 
 	public LocalCacheUtil mLocalCacheUtil; 
-	public NetCacheUtils(LocalCacheUtil mLocalUtils) {
+	private MemoryCacheUtils mMemoryUtils;
+	public NetCacheUtils(LocalCacheUtil mLocalUtils,MemoryCacheUtils mMemoryUtils) {
 		mLocalCacheUtil=mLocalUtils;
+		this.mMemoryUtils=mMemoryUtils;
 	}
 	public void getBitmapFromNet(ImageView imageView, String url) {  
 		BitmapTask task=new BitmapTask();
@@ -67,6 +69,7 @@ public class NetCacheUtils {
 					mImageView.setImageBitmap(result); 
 					//将图片保存到本地
 					mLocalCacheUtil.setBitmapToLocal(result, url);
+					mMemoryUtils.setBitmapToMemory(url, result); 
 				}
 			}
 		} 

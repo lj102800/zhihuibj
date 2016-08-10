@@ -20,8 +20,8 @@ import com.example.zhsh.domain.PhotoBean;
 import com.example.zhsh.domain.PhotoBean.PhotoNewsData;
 import com.example.zhsh.global.Constants;
 import com.example.zhsh.utils.CacheUtils;
-import com.example.zhsh.utils.bitmap.MyBitmapUtil;
 import com.google.gson.Gson;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -84,11 +84,12 @@ public class PhotosMenuDetailPager extends BaseMenuDetailPager implements OnClic
 		gvlist.setAdapter(new PhotoAdapter());
 	}
 	class PhotoAdapter extends BaseAdapter{
-		private MyBitmapUtil mBitmapUtils;
+//		private MyBitmapUtil mBitmapUtils;
+		private BitmapUtils mBitmapUtils;
 		public PhotoAdapter(){
-//			mBitmapUtils=new BitmapUtils(mActivity);
-//			mBitmapUtils.configDefaultLoadingImage(R.drawable.news_pic_default);
-			mBitmapUtils=new MyBitmapUtil();
+			mBitmapUtils=new BitmapUtils(mActivity);
+			mBitmapUtils.configDefaultLoadingImage(R.drawable.news_pic_default);
+//			mBitmapUtils=new MyBitmapUtil();
 		}
 		@Override
 		public int getCount() { 
@@ -119,7 +120,7 @@ public class PhotosMenuDetailPager extends BaseMenuDetailPager implements OnClic
 			}
 			PhotoNewsData item=getItem(arg0);
 			holder.tvTitle.setText(item.title);
-			mBitmapUtils.display(holder.ivIcon, item.listimage);
+			mBitmapUtils.display(holder.ivIcon, Constants.SERVER_URL+item.listimage);
 			System.out.println(item.listimage+"=====");
 			return arg1;
 		} 
