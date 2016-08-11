@@ -2,6 +2,7 @@ package com.example.zhsh;
 
 import java.util.ArrayList;
 
+import com.example.zhsh.utils.DensityUtils;
 import com.example.zhsh.utils.PrefUtils;
 
 import android.app.Activity;
@@ -51,7 +52,7 @@ public class GuideActivity extends Activity implements OnClickListener{
 			pointView.setImageResource(R.drawable.shape_circle_default);
 			LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
 			if(i>0){
-				 params.leftMargin=10;//从第二个点开始设置边距
+				 params.leftMargin=DensityUtils.dp2px(8, this);//从第二个点开始设置边距
 			}
 			pointView.setLayoutParams(params);
 			
